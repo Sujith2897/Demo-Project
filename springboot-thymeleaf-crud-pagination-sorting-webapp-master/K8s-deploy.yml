@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springapp-deployment
+  labels:
+    app: springapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springapp-deployment
+  template:
+    metadata:
+      labels:
+        app: springapp-deployment
+    spec:
+      containers:
+        - name: springapp-deployment
+          image: public.ecr.aws/q0r5o2b3/deploy-k8s:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
